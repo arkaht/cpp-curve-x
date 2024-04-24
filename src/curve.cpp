@@ -1,6 +1,6 @@
-#include <curve-x/curve.h>
 
 #include <cassert>
+#include "curve.h"
 
 using namespace curve_x;
 
