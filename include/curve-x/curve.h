@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include <src/point.h>
-#include <src/key.h>
+#include "point.h"
+#include "key.h"
 
 namespace curve_x
 {
