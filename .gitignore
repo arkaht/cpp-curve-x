@@ -1,0 +1,15 @@
+# CMake
+bin/
+build/
+out/
+
+# IDE
+.vscode/
+.vs/
+*.sln
+*.vcxproj*
+.idea/
+
+# Intermediate and binaries
+Debug/
+x64/
