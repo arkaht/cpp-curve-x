@@ -1,5 +1,3 @@
-
-#include <cassert>
 #include "curve.h"
 
 using namespace curve_x;
@@ -188,7 +186,7 @@ Point Curve::get_point( int point_id, PointSpace point_space ) const
 	}
 
 	//  Unreachable code
-	assert( false );
+	return Point();
 }
 
 Point Curve::get_nearest_point_to( 
