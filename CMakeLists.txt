@@ -15,5 +15,10 @@ target_include_directories(curve_x PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/")
 target_sources(curve_x PRIVATE "${CURVE_X_SOURCES}")
 
 #  Declare test executable
-add_executable(curve_x_test "tests/main.cpp")
-target_link_libraries(curve_x_test PRIVATE curve_x)
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+	add_executable(curve_x_test "tests/main.cpp")
+	target_link_libraries(curve_x_test PRIVATE curve_x)
+	message("Included Curve-X test")
+else()
+	message("Skipped Curve-X test")
+endif ()
