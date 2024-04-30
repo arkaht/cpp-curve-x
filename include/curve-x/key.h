@@ -11,17 +11,17 @@ namespace curve_x
 	enum class TangentMode
 	{
 		/*
-		 * Mirroring both tangents directions and lengths.
+		 * Mirroring tangent directions and lengths.
 		 */
 		Mirrored	= 0,
 
 		/*
-		 * Mirroring both tangents directions with custom lengths.
+		 * Tangent directions are aligned with individual lengths.
 		 */
 		Aligned		= 1,
 
 		/*
-		 * Both tangents have its own direction and length.
+		 * Both tangents have their own direction and length.
 		 */
 		Broken		= 2,
 
