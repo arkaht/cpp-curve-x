@@ -14,7 +14,7 @@ Point Curve::evaluate_by_percent( float t ) const
 	int first_key_id, last_key_id;
 	find_evaluation_keys_id_by_percent( 
 		&first_key_id, &last_key_id, t );
-	t = fmaxf( fminf( t, 1.0f ), 0.0f );
+	//t = fmaxf( fminf( t, 1.0f ), 0.0f );
 
 	const CurveKey& k0 = get_key( first_key_id );
 	const CurveKey& k1 = get_key( last_key_id );
