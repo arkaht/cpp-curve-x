@@ -7,6 +7,10 @@
 
 namespace curve_x
 {
+	/*
+	 * The extrems coordinates of a curve, these bounds can be
+	 * represented in a rectangle.
+	 */
 	struct CurveExtrems
 	{
 		float min_x, max_x;
@@ -20,7 +24,25 @@ namespace curve_x
 	constexpr float ITERATIONS_STEPS = 1.0f / 100.0f;
 
 	/*
-	 * 2D Bézier cubic curve
+	 * A Bézier cubic 2D-spline consisting of a vector of curve 
+	 * keys. 
+	 
+	 * A curve should either represent timed-values or geometric 
+	 * shapes as the evaluation can be done either by percent 
+	 * (from 0.0f to 1.0f), by time (the X-axis) or by distance.
+	 * 
+	 * Keys are referenced by using a 'key index', which is 
+	 * basically the index used to store the key inside the keys 
+	 * vector.
+	 * 
+	 * Some functions use a 'point index', which would refer to an 
+	 * index inside a theoritical vector where all control points
+	 * and tangents would be placed in the order: control point 0,
+	 * right tangent 0, left tangent 0, control point 1, right 
+	 * tangent 1, left tangent 1, etc. 
+	 * 
+	 * Nevertheless, there are helper functions to convert 'key 
+	 * indices' to 'point indices' and vice-versa.
 	 */
 	class Curve
 	{
@@ -39,10 +61,14 @@ namespace curve_x
 		 * Internally using 'evaluate_by_percent' by dividing the
 		 * distance by the curve length.
 		 */
-		Point evaluate_by_distance( float d ) const;
+		Point evaluate_by_distance( float dist ) const;
 		/*
 		 * Evaluate the Y-axis value corresponding to the given 
 		 * time on the X-axis.
+		 * 
+		 * NOTE: This evaluation method does NOT take in account 
+		 * the tangents X-axis right now. 
+		 * See: https://github.com/arkaht/cpp-curve-x/issues/1
 		 */
 		float evaluate_by_time( float time ) const;
 
@@ -73,8 +99,9 @@ namespace curve_x
 		 */
 		void set_point( int point_id, const Point& point );
 		/*
-		 * Set the location at the given point index, assuming it's
-		 * a tangent point, and apply the tangent mode to its peer.
+		 * Set the location at the given point index, assuming it 
+		 * is a tangent point, and apply the tangent mode to its 
+		 * peer.
 		 * 
 		 * Since tangents are stored relatively to their control 
 		 * point, this function handles point-space conversion.
@@ -223,12 +250,12 @@ namespace curve_x
 		void compute_length( const float steps = ITERATIONS_STEPS );
 
 		/*
-		 * Get the curve's length. 
-		 * It'll update the length if marked as dirty.
+		 * Get the length of the curve. 
+		 * If marked as dirty, the length is updated beforehand.
 		 */
 		float get_length();
 		/*
-		 * Get the previously computed curve's length. 
+		 * Get the previously computed length of the curve. 
 		 * 
 		 * Due to constness, it will NOT update the length if 
 		 * marked as dirty. You may want to manually compute the 
@@ -244,40 +271,16 @@ namespace curve_x
 		bool is_length_dirty = true;
 
 	private:
+		/*
+		 * Length of the curve, representing its maximum distance.
+		 * It is automatically computed after changes to the curve.
+		 */
 		float _length = 0.0f;
 
 		/*
 		 * Vector containing the keys.
-		 * 
 		 * The required index is refered as a 'key index'.
 		 */
 		std::vector<CurveKey> _keys;
-
-		/*
-		 * Vector containing both control & tangent points.
-		 * 
-		 * Control points are set every 3 indexes (e.g. 0, 3, 6)
-		 * and are in global-space.
-		 * 
-		 * Tangent points are in local-space, forming a scaled 
-		 * direction from its control point. Their indexes are
-		 * close to their control point (e.g. point 1 is a tangent
-		 * of control point 0; points 2 and 4 are tangents of 
-		 * control point 3)
-		 * 
-		 * A 'point index' is needed to index this vector.
-		 */
-		//std::vector<Point> _points;
-
-		/*
-		 * Vector of tangent modes.
-		 * 
-		 * Each element correspond to the mode for each control 
-		 * point. That also mean that this should always a size of 
-		 * '_points' divided by 3 and rounded up.
-		 * 
-		 * A 'key index' is needed to index this vector.
-		 */
-		//std::vector<TangentMode> _modes;
 	};
 }

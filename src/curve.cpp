@@ -27,9 +27,9 @@ Point Curve::evaluate_by_percent( float t ) const
 	return Utils::bezier_interp( p0, p1, p2, p3, t );
 }
 
-Point Curve::evaluate_by_distance( float d ) const
+Point Curve::evaluate_by_distance( float dist ) const
 {
-	return evaluate_by_percent( d / _length );
+	return evaluate_by_percent( dist / _length );
 }
 
 float Curve::evaluate_by_time( float time ) const

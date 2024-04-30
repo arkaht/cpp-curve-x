@@ -5,7 +5,8 @@
 namespace curve_x
 {
 	/*
-	 * 
+	 * Tangent mode defining the constraint under which tangents
+	 * behave in relation to each other.
 	 */
 	enum class TangentMode
 	{
@@ -27,6 +28,13 @@ namespace curve_x
 		MAX,
 	};
 
+	/*
+	 * A key inside a curve, consisting of a control point, two
+	 * tangents and the tangent mode constraint.
+	 * 
+	 * Tangent points are stored in local-space, forming a scaled 
+	 * direction from the control point.
+	 */
 	class CurveKey
 	{
 	public:
@@ -37,7 +45,17 @@ namespace curve_x
 			TangentMode tangent_mode = TangentMode::Mirrored
 		);
 
+		/*
+		 * Set the location of the left tangent (in local space) 
+		 * and applies the tangent mode constraint on the right 
+		 * tangent.
+		 */
 		void set_left_tangent( const Point& point );
+		/*
+		 * Set the location of the right tangent (in local space) 
+		 * and applies the tangent mode constraint on the left 
+		 * tangent.
+		 */
 		void set_right_tangent( const Point& point );
 
 	public:
