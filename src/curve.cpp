@@ -19,10 +19,10 @@ Point Curve::evaluate_by_percent( float t ) const
 	const CurveKey& k0 = get_key( first_key_id );
 	const CurveKey& k1 = get_key( last_key_id );
 
-	const Point p0 = k0.control;
-	const Point p1 = p0 + k0.right_tangent;
-	const Point p3 = k1.control;
-	const Point p2 = p3 + k1.left_tangent;
+	const Point& p0 = k0.control;
+	const Point  p1 = p0 + k0.right_tangent;
+	const Point& p3 = k1.control;
+	const Point  p2 = p3 + k1.left_tangent;
 
 	return Utils::bezier_interp( p0, p1, p2, p3, t );
 }
@@ -35,8 +35,8 @@ Point Curve::evaluate_by_distance( float d ) const
 float Curve::evaluate_by_time( float time ) const
 {
 	//  Bound evaluation to first & last points
-	const Point first_point = get_key( 0 ).control;
-	const Point last_point = get_key( get_keys_count() - 1 ).control;
+	const Point& first_point = get_key( 0 ).control;
+	const Point& last_point = get_key( get_keys_count() - 1 ).control;
 	if ( time <= first_point.x ) return first_point.y;
 	if ( time >= last_point.x ) return last_point.y;
 
@@ -53,18 +53,18 @@ float Curve::evaluate_by_time( float time ) const
 	const CurveKey& k1 = get_key( last_key_id );
 
 	//  Get control points
-	const Point p0 = k0.control;
-	const Point p3 = k1.control;
+	const Point& p0 = k0.control;
+	const Point& p3 = k1.control;
 
 	//  Get tangent points
-	const Point t1 = k0.right_tangent;
-	const Point t2 = k1.left_tangent;
+	const Point& t1 = k0.right_tangent;
+	const Point& t2 = k1.left_tangent;
 	/*const float m1 = t1.length();
 	const float m2 = t2.length();*/
 
 	//  Compute time difference
 	const float time_diff = p3.x - p0.x;
-	//if ( time_diff <= 0.0f ) return p0.y;
+	if ( time_diff <= 0.0f ) return p0.y;
 
 	//  Compute time ratio from p0 & p3 (from 0.0f to 1.0f)
 	const float t = ( time - p0.x ) / time_diff;
@@ -394,7 +394,7 @@ void Curve::find_evaluation_keys_id_by_distance(
 	for ( int key_id = 0; key_id < keys_count; key_id++ )
 	{
 		const CurveKey& key = get_key( key_id );
-		if ( d > key.distance ) continue;
+		//if ( d > key.distance ) continue;
 
 		*first_key_id = key_id - 1;
 		*last_key_id = key_id;
@@ -479,7 +479,7 @@ void Curve::compute_length( const float steps )
 	}
 
 	//  Set last key's distance to length
-	current_key->distance = _length;
+	//current_key->distance = _length;
 
 	is_length_dirty = false;
 }

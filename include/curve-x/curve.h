@@ -14,11 +14,13 @@ namespace curve_x
 	};
 
 	/*
-	 * Bézier Cubic Curve
-	 * 
-	 * Key index:
-	 * 
-	 * Point index:
+	 * Default precision value for iteration steps.
+	 * Used for length and nearest point distance calculations.
+	 */
+	constexpr float ITERATIONS_STEPS = 1.0f / 100.0f;
+
+	/*
+	 * 2D Bézier cubic curve
 	 */
 	class Curve
 	{
@@ -96,7 +98,7 @@ namespace curve_x
 		 */
 		Point get_nearest_point_to(
 			const Point& point,
-			const float steps = 1.0f / 30.0f
+			const float steps = ITERATIONS_STEPS
 		) const;
 		/*
 		 * Compute the nearest curve distance from an arbitrary 
@@ -104,7 +106,7 @@ namespace curve_x
 		 */
 		float get_nearest_distance_to(
 			const Point& point,
-			const float steps = 1.0f / 30.0f
+			const float steps = ITERATIONS_STEPS
 		) const;
 
 		/*
@@ -218,7 +220,7 @@ namespace curve_x
 		 * Compute the curve's length, representing the maximum 
 		 * evaluable distance.
 		 */
-		void compute_length( const float steps = 1.0f / 100.0f );
+		void compute_length( const float steps = ITERATIONS_STEPS );
 
 		/*
 		 * Get the curve's length. 

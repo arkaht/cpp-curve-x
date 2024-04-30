@@ -4,6 +4,9 @@
 
 namespace curve_x
 {
+	/*
+	 * 
+	 */
 	enum class TangentMode
 	{
 		/*
@@ -42,9 +45,10 @@ namespace curve_x
 		Point left_tangent;
 		Point right_tangent;
 
-		TangentMode tangent_mode = TangentMode::Mirrored;
+		TangentMode tangent_mode;
 
-		float distance = -1.0f;
+		//  TODO: Implement the distance on the curve for each key 
+		//float distance = -1.0f;
 
 	private:
 		void _set_tangent( 
