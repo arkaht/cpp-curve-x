@@ -69,6 +69,11 @@ namespace curve_x
 		//float distance = -1.0f;
 
 	private:
+		/*
+		 * Set the location of the target tangent (in local space) 
+		 * and applies the tangent mode constraint on the peer 
+		 * tangent.
+		 */
 		void _set_tangent( 
 			const Point& point, 
 			Point* target_tangent,

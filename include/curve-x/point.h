@@ -6,6 +6,10 @@
 
 namespace curve_x
 {
+	/*
+	 * Space defining how a point should be interpreted, allowing
+	 * conversions between spaces.
+	 */
 	enum class PointSpace
 	{
 		/*
@@ -19,6 +23,12 @@ namespace curve_x
 		Global,
 	};
 
+	/*
+	 * A point in an arbitrary space, consisting of two axes X and Y.
+	 *
+	 * If raylib is defined before this header file, conversions
+	 * constructor and operator for Vector2 will be available.
+	 */
 	struct Point
 	{
 	public:
@@ -73,12 +83,19 @@ namespace curve_x
 			};
 		}
 
+		/*
+		 * Convert the point to a one-line string format.
+		 */
 		std::string str() const
 		{
 			return "x=" + std::to_string( x ) + ";" 
 				 + "y=" + std::to_string( y );
 		}
 
+		/*
+		 * Returns a copy of the point whose axes are remapped from 
+		 * range 'in' to range 'out'.
+		 */
 		Point remap( 
 			float in_min_x, float in_max_x, 
 			float out_min_x, float out_max_x,
@@ -96,16 +113,26 @@ namespace curve_x
 			};
 		}
 
+		/*
+		 * Compute the squared magnitude of the point.
+		 */
 		float length_sqr() const 
 		{
 			return x * x + y * y;
 		}
 
+		/*
+		 * Compute the magnitude of the point.
+		 */
 		float length() const
 		{
 			return sqrtf( length_sqr() );
 		}
 
+		/*
+		 * Returns a normalized copy of the point. 
+		 * Normalization results in the point magnitude being 1.0f.
+		 */
 		Point normalized() const
 		{
 			float m = length();

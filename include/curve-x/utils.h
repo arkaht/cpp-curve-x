@@ -4,9 +4,20 @@
 
 namespace curve_x
 {
+	/*
+	 * Utility class containing mathematical functions
+	 */
 	class Utils
 	{
 	public:
+		/*
+		 * Template function to do a Bézier cubic interpolation.
+		 * 
+		 * 'T' must have operators for both multiplication of floats 
+		 * and addition of themselves.
+		 * 
+		 * Types 'float' and 'curve_x::Point' can be safely used.
+		 */
 		template<typename T>
 		static T bezier_interp( T p0, T p1, T p2, T p3, float t )
 		{
@@ -26,6 +37,9 @@ namespace curve_x
 				 + p3 * t3;
 		}
 
+		/*
+		 * Remaps a float from range 'a' to range 'b'.
+		 */
 		static float remap(
 			float value,
 			float min_a, float max_a,
