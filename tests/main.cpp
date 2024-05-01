@@ -1,6 +1,8 @@
 #include <curve-x/curve.h>
 #include <curve-x/curve-serializer.h>
 
+#include <assert.h>
+
 using namespace curve_x;
 
 int main()
@@ -9,6 +11,9 @@ int main()
 
 	//  Initialize a curve object
 	Curve curve;
+
+	//  We have yet not added any keys, so the curve is empty
+	assert( curve.get_keys_count() == 0 );
 
 	//  Add two keys with different control points
 	curve.add_key( CurveKey( { 0.0f, 0.0f } ) );
@@ -20,11 +25,28 @@ int main()
 		CurveKey( 
 			{ 0.5f, 0.5f },
 			{ -0.5f, -0.5f },
-			//  Set the right tangent to have an heavy weight on the Y-axis
+			//  Set the right tangent to have an heavy weight on the
+			//  Y-axis
 			{ 1.0f, 5.0f },
 			TangentMode::Broken
 		) 
 	);
+
+	//  Add another key
+	curve.add_key( CurveKey( { 2.0f, 3.0f } ) );
+
+	//  We indeed have added 4 keys
+	assert( curve.get_keys_count() == 4 );
+
+	//  Remove the last key
+	curve.remove_key( 3 );
+
+	//  Removed one, so we are down to 3 keys
+	assert( curve.get_keys_count() == 3 );
+
+	//  It is important to ensure that curves are valid before 
+	//  manipulating them (e.g. set/get point, get key, evaluations)
+	assert( curve.is_valid() );
 
 	//  Evaluate the curve by time (i.e. using the X-axis)
 	printf( "Evaluation by times:\n" );
