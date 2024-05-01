@@ -52,7 +52,7 @@ Curve CurveSerializer::unserialize( const std::string& data )
 		{
 			if ( !std::regex_match( line, match, REGEX_VERSION ) )
 			{
-				throw std::runtime_error( 
+				throw std::invalid_argument( 
 					"Expected format version at the first line!" 
 				);
 			}
