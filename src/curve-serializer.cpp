@@ -45,8 +45,6 @@ Curve CurveSerializer::unserialize( const std::string& data )
 	std::istringstream iss( data );
 	for ( std::string line; std::getline( iss, line ); )
 	{
-		//printf( "%s\n", line.c_str() );
-
 		std::smatch match;
 
 		//  Find format version
@@ -62,14 +60,14 @@ Curve CurveSerializer::unserialize( const std::string& data )
 			//  Convert string to integer
 			version = _to_int( match[1].str() );
 
+			//  TODO: Take in account older versions
+
 			continue;
 		}
 
 		//  Parse a curve key
 		if ( std::regex_search( line, match, REGEX_KEY_ID ) )
 		{
-			//  NOT USED:
-			// int key_id = atoi( match[1].str().c_str() );
 			line = match.suffix().str();
 
 			//  Match control point
@@ -100,7 +98,6 @@ Curve CurveSerializer::unserialize( const std::string& data )
 				right_tangent, 
 				tangent_mode 
 			);
-			//printf( "New key!\n" );
 		}
 	}
 
