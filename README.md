@@ -111,7 +111,7 @@ add_subdirectory("libs/curve-x")
 ```cmake
 target_link_libraries(<your_project_target> PRIVATE curve_x <your_project_libs>)
 ```
-5. In your code, use the library, for example in `main.cpp`:
+5. In your code, use the library, for example in your `main.cpp`:
 ```cpp
 #include <curve-x/curve.h>
 
@@ -141,7 +141,7 @@ Then, as I'm still a student, it also became a learning project to know more abo
 
 It is also my first time using CMake and Git Submodules (used in the [editor repository](https://github.com/arkaht/cpp-curve-editor-x)).
 
-## References
+## Credits
 This library has been possible thanks to all these online resources:
 + [The Continuity of Splines](https://www.youtube.com/watch?v=jvPPXbo87ds) by **Freya Holmér**
 + [Cubic Hermite spline](https://en.wikipedia.org/wiki/Cubic_Hermite_spline) from **Wikipedia**
@@ -149,3 +149,4 @@ This library has been possible thanks to all these online resources:
 + [Curves and Splines](https://catlikecoding.com/unity/tutorials/curves-and-splines/) from **Catlike Coding**
 + [A Primer on Bézier Curve](https://pomax.github.io/BezierInfo-2/) by **Pomax**
 + **Unreal Engine**'s `FRichCurve` code for evaluation by time
+
