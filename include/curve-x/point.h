@@ -83,6 +83,12 @@ namespace curve_x
 			};
 		}
 
+		bool operator==( const Point& point ) const
+		{
+			return x == point.x 
+				&& y == point.y;
+		}
+
 		/*
 		 * Convert the point to a one-line string format.
 		 */
