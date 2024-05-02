@@ -225,7 +225,7 @@ float Curve::get_nearest_distance_to(
 
 int Curve::point_to_key_id( int point_id ) const
 {
-	return (int)roundf( point_id / 3.0f );
+	return (int)floorf( point_id / 3.0f );
 }
 
 int Curve::key_to_point_id( int key_id ) const
