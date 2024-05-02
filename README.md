@@ -1,5 +1,5 @@
 # Curve-X
-**Curve-X is a small and easy-to-use C++ Bézier library to create 2D-splines with its own optional GUI editor.**
+**Curve-X is a small and easy-to-use C++ Bézier library to create 2D-splines with its own GUI editor.**
 
 *If you are a game developer working on its own C++ engine and you want to have fine control over your values (let's say: gamepad sensitivity, dynamic FOV depending on the player's speed, gravity force, particle effects, animations, etc.) for the sake of game feel, this project may interests you.*
 
@@ -26,7 +26,7 @@ This project is still under development, feel free to raise [issues](https://git
 + **Free and open-source**
 
 ## Project Structure
-This project is split into two Github repositories: the library (this one) and the [GUI editor application](https://github.com/arkaht/cpp-curve-editor-x). You are not forced to use the editor, it is entirely optional but it is here to facilitate your experience with Curve-X.
+This project is split into two Github repositories: the library (this one) and the [GUI editor](https://github.com/arkaht/cpp-curve-editor-x). You are not forced to use the editor, it is entirely optional but it is here to facilitate your experience with Curve-X.
 
 Folder structure:
 + `include/curve-x/` contains header files that you, as the library user, want to use inside your project. The most important one is `curve.h`, containing all required definitions to start using the library. If you want to have a deep-dive into the code, I'd recommend you to check the header files in this order: `point.h`, `utils.h`, `key.h`, `curve.h` and finally `curve-serializer.h`. 

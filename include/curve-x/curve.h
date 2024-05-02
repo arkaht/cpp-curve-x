@@ -27,19 +27,23 @@ namespace curve_x
 	 * A Bézier cubic 2D-spline consisting of a vector of curve 
 	 * keys. 
 	 
-	 * A curve should either represent timed-values or geometric 
-	 * shapes as the evaluation can be done either by percent 
-	 * (from 0.0f to 1.0f), by time (the X-axis) or by distance.
+	 * A curve should either represent a geometrical shape or 
+	 * timed-values as the evaluation can be done either by the 
+	 * percentage on the curve (from 0.0f to 1.0f), by distance 
+	 * (in relation to the curve length) or by time (the X-axis).
 	 * 
 	 * Keys are referenced by using a 'key index', which is 
 	 * basically the index used to store the key inside the keys 
 	 * vector.
 	 * 
-	 * Some functions use a 'point index', which would refer to an 
-	 * index inside a theoritical vector where all control points
-	 * and tangents would be placed in the order: control point 0,
-	 * right tangent 0, left tangent 0, control point 1, right 
-	 * tangent 1, left tangent 1, etc. 
+	 * A 'point index' refers to an index inside a theoritical 
+	 * vector where all control points and tangent points of all 
+	 * keys are merged in this order: control point 0, right 
+	 * tangent 0, left tangent 0, control point 1, right tangent 1,
+	 * left tangent 1, etc. 
+	 * 
+	 * For this reason, a 'point index' can either refer to a 
+	 * control point or to a tangent point.
 	 * 
 	 * Nevertheless, there are helper functions to convert 'key 
 	 * indices' to 'point indices' and vice-versa.
@@ -77,25 +81,31 @@ namespace curve_x
 		 */
 		void add_key( const CurveKey& key );
 		/*
-		 * Insert a key at given index.
+		 * Insert a key before given index. 
+		 * The index must refer either to a valid key or to the 
+		 * keys count.
 		 */
 		void insert_key( int key_id, const CurveKey& key );
 		/*
-		 * Remove a key at given index.
+		 * Remove a key at given index. 
+		 * The index must refer to a valid key.
 		 */
 		void remove_key( int key_id );
 
 		/*
 		 * Get a reference to the key at given index.
+		 * The index must refer to a valid key.
 		 */
 		CurveKey& get_key( int key_id );
 		/*
 		 * Get a const-reference to the key at given index.
+		 * The index must refer to a valid key.
 		 */
 		const CurveKey& get_key( int key_id ) const;
 
 		/*
 		 * Set the location at the given point index.
+		 * The index must refer to a valid point.
 		 */
 		void set_point( int point_id, const Point& point );
 		/*
@@ -105,6 +115,8 @@ namespace curve_x
 		 * 
 		 * Since tangents are stored relatively to their control 
 		 * point, this function handles point-space conversion.
+		 * 
+		 * The index must refer to a valid point.
 		 */
 		void set_tangent_point( 
 			int point_id, 
@@ -114,6 +126,7 @@ namespace curve_x
 
 		/*
 		 * Get the location from the specified point index.
+		 * The index must refer to a valid point.
 		 */
 		Point get_point( 
 			int point_id, 
@@ -150,6 +163,8 @@ namespace curve_x
 		 * 
 		 * By default, it applies the new mode constraint to both 
 		 * tangents.
+		 * 
+		 * The index must refer to a valid key.
 		 */
 		void set_tangent_mode( 
 			int key_id, 
@@ -158,6 +173,7 @@ namespace curve_x
 		);
 		/*
 		 * Returns the tangent mode of given key index.
+		 * The index must refer to a valid key.
 		 */
 		TangentMode get_tangent_mode( int key_id ) const;
 
@@ -171,18 +187,18 @@ namespace curve_x
 		 */
 		bool is_valid() const;
 		/*
-		 * Returns whenever the given key index correspond to a
+		 * Returns whenever the given key index refers to a
 		 * valid key.
 		 */
 		bool is_valid_key_id( int key_id ) const;
 		/*
-		 * Returns whenever the given point index correspond to a
+		 * Returns whenever the given point index refers to a
 		 * valid point.
 		 */
 		bool is_valid_point_id( int point_id ) const;
 		/*
-		 * Returns whenever the given point index may correspond to
-		 * a control point.
+		 * Returns whenever the given point index refers to
+		 * a control point or to a tangent point.
 		 */
 		bool is_control_point_id( int point_id ) const;
 
