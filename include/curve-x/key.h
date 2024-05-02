@@ -5,7 +5,7 @@
 namespace curve_x
 {
 	/*
-	 * Tangent mode defining the constraint under which tangents
+	 * Tangent mode which defines the constraint by which tangents
 	 * behave in relation to each other.
 	 */
 	enum class TangentMode
@@ -29,10 +29,10 @@ namespace curve_x
 	};
 
 	/*
-	 * A key inside a curve, consisting of a control point, two
-	 * tangents and the tangent mode constraint.
+	 * A key inside a curve consisting of a control point, two
+	 * tangents and the related tangent mode.
 	 * 
-	 * Tangent points are stored in local-space, forming a scaled 
+	 * Tangent points are stored in local-space, forming a weighted 
 	 * direction from the control point.
 	 */
 	class CurveKey

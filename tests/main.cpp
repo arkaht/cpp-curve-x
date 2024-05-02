@@ -41,7 +41,7 @@ int main()
 	//  Remove the last key
 	curve.remove_key( 3 );
 
-	//  Removed one, so we are down to 3 keys
+	//  We are now down to 3 keys
 	assert( curve.get_keys_count() == 3 );
 
 	//  It is important to ensure that curves are valid before 

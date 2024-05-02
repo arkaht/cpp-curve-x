@@ -24,7 +24,7 @@ namespace curve_x
 	};
 
 	/*
-	 * A point in an arbitrary space, consisting of two axes X and Y.
+	 * A point consisting of two axes X and Y.
 	 *
 	 * If raylib is defined before this header file, conversions
 	 * constructor and operator for Vector2 will be available.
