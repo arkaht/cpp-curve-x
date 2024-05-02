@@ -1,6 +1,7 @@
 #include "curve-serializer.h"
 
 #include <regex>
+#include <sstream>
 
 using namespace curve_x;
 
