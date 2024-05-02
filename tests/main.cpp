@@ -3,37 +3,35 @@
 
 #include <assert.h>
 
-using namespace curve_x;
-
 int main()
 {
 	printf( "Curve testing executable\n\n" );
 
 	//  Initialize a curve object
-	Curve curve;
+	curve_x::Curve curve;
 
 	//  We have yet not added any keys, so the curve is empty
 	assert( curve.get_keys_count() == 0 );
 
 	//  Add two keys with different control points
-	curve.add_key( CurveKey( { 0.0f, 0.0f } ) );
-	curve.add_key( CurveKey( { 1.0f, 1.0f } ) );
+	curve.add_key( curve_x::CurveKey( { 0.0f, 0.0f } ) );
+	curve.add_key( curve_x::CurveKey( { 1.0f, 1.0f } ) );
 
 	//  Insert a key between the two above
 	curve.insert_key( 
 		1, 
-		CurveKey( 
+		curve_x::CurveKey( 
 			{ 0.5f, 0.5f },
 			{ -0.5f, -0.5f },
 			//  Set the right tangent to have an heavy weight on the
 			//  Y-axis
 			{ 1.0f, 5.0f },
-			TangentMode::Broken
+			curve_x::TangentMode::Broken
 		) 
 	);
 
 	//  Add another key
-	curve.add_key( CurveKey( { 2.0f, 3.0f } ) );
+	curve.add_key( curve_x::CurveKey( { 2.0f, 3.0f } ) );
 
 	//  We indeed have added 4 keys
 	assert( curve.get_keys_count() == 4 );
@@ -50,7 +48,7 @@ int main()
 	//  A 'point index' refers to one of the point inside a key 
 	//  (either be a control point or a tangent point). A control
 	//  point is placed every third 'point index'. Then, in between,
-	//  comes its right tangent and left tangent points.
+	//  comes the right tangent and left tangent points.
 	// 
 	//  Therefore, you have two ways of manipulating a curve with 
 	//  this library. However, if you would prefer one to another, 
@@ -84,10 +82,10 @@ int main()
 	//  Further proof the link between 'point index' and 'key index'
 	//  by demonstrating the two ways of getting the control points 
 	//  and the tangent points of a key (in this case, the first key).
-	const Point& control_point = curve.get_point( 0 );
-	const Point& right_tangent = curve.get_point( 1 );
-	const Point& left_tangent = curve.get_point( 2 );
-	const CurveKey& key = curve.get_key( 0 );
+	const curve_x::Point& control_point = curve.get_point( 0 );
+	const curve_x::Point& right_tangent = curve.get_point( 1 );
+	const curve_x::Point& left_tangent = curve.get_point( 2 );
+	const curve_x::CurveKey& key = curve.get_key( 0 );
 	assert( control_point == key.control );
 	assert( right_tangent == key.right_tangent );
 	assert( left_tangent  == key.left_tangent );
@@ -110,7 +108,7 @@ int main()
 	printf( "\n" );
 
 	//  Serialize the curve into a string
-	CurveSerializer serializer;
+	curve_x::CurveSerializer serializer;
 	std::string data = serializer.serialize( curve );
 	printf( "Curve serialized data:\n%s\n", data.c_str() );
 }
