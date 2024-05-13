@@ -1,4 +1,4 @@
-#include "key.h"
+#include <curve-x/key.h>
 
 using namespace curve_x;
 

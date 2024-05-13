@@ -10,8 +10,6 @@ file(GLOB_RECURSE CURVE_X_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}
 #  Declare library with sources and headers
 add_library(curve_x)
 target_include_directories(curve_x PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
-target_include_directories(curve_x PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/curve-x/")
-target_include_directories(curve_x PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/")
 target_sources(curve_x PRIVATE "${CURVE_X_SOURCES}")
 
 #  Declare test executable
