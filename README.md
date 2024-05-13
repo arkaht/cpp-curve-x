@@ -24,6 +24,9 @@ This project is still under development, feel free to raise [issues](https://git
 + Custom and human-readable text format for curves serialization
 + **Free and open-source**
 
+![image](https://github.com/arkaht/cpp-curve-x/assets/114919245/a32a058e-9ba1-4add-89f0-de4ad0f14434)
+> Two examples: a geometrical shape curve ([`samples/heart.cvx`](https://github.com/arkaht/cpp-curve-x/blob/master/samples/heart.cvx)) and a timed-based curve ([`samples/controller-gamepad-sensitivity.cvx`](https://github.com/arkaht/cpp-curve-x/blob/master/samples/controller-gamepad-sensitivity.cvx)) from the [GUI editor](https://github.com/arkaht/cpp-curve-editor-x)
+
 ## Project Structure
 This project is split into two Github repositories: the library (this one) and the [GUI editor](https://github.com/arkaht/cpp-curve-editor-x). You are not forced to use the editor, it is entirely optional but it is here to facilitate your experience with Curve-X.
 
