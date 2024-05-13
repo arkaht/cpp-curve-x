@@ -85,7 +85,7 @@ This project is built using **CMake 3.11**. However, with proper setup it is not
 
 ### Add Curve-X to your project
 #### With CMake
-1. Clone Curve-X or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
+1. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
 2. Move the `curve-x` folder inside your project libraries folder, for example: 
 ```
 <your_project>/
@@ -98,6 +98,7 @@ This project is built using **CMake 3.11**. However, with proper setup it is not
 │   │   ├── CMakeLists.txt
 │   │   └── ...
 │   └── ...
+├── main.cpp
 ├── CMakeLists.txt
 └── ...
 ```
@@ -127,13 +128,57 @@ int main()
 6. Compile and run your project, you're ready to go!
 
 #### Without CMake
-*To be written...*
+1. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
+2. Move the `curve-x` folder inside your project libraries folder, for example: 
+```
+<your_project>/
+├── libs/
+│   ├── curve-x/
+│   │   ├── include/
+│   │   │   └── ...
+│   │   ├── src/
+│   │   │   └── ...
+│   │   └── ...
+│   └── ...
+├── main.cpp
+└── ...
+```
+3. Optionally, delete folders that aren't required for your project such as `samples/` and `tests/`.
+4. Add an additional include directory at `libs/curve-x/include/`.
+5. Add the source files at `libs/curve-x/src/*.cpp` to be compiled.
+5. In your code, use the library, for example in your `main.cpp`:
+```cpp
+#include <curve-x/curve.h>
+
+// ...
+
+int main()
+{
+	curve_x::Curve curve;
+
+	// ...
+}
+```
+6. Compile and run your project, you're ready to go!
 
 ### Build the project
-*To be written...*
+> *Note: As I don't have **Linux** or **MacOS** machines, the following instructions have been written only for **Windows**.* If you know how to do it in those platforms, I'd welcome a pull request!
+
+#### Visual Studio Code
+1. Install **Visual Studio Code** extensions [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) and [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) from Microsoft.
+2. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
+3. Open the project's folder inside **Visual Studio Code**
+4. Configure the project with CMake (`Ctrl+Shift+P > CMake: Configure`)
+5. Build the project with CMake (`Ctrl+Shift+P > CMake: Build`, `F7` or `⚙ Build` button at the bottom-left)
+6. Run the project examples, you're ready to make changes!
+
+#### Visual Studio 2022
+1. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
+2. Open the project's folder inside **Visual Studio 2022**
+3. Once the project has been automatically configured, run the project examples, you're ready to make changes!
 
 ## Why did I make it?
-Originally, it was because I wanted time-based curves for my game engine so I could better control the feeling of my games, especially when I wanted to tweak each parameter of my explosion effects (i.e. transform scales and color lerps) with precise control and better visualization instead of having to hardcode them one by one.
+Originally, it was because I wanted time-based curves for my game engine so I could better control the feeling of my games, especially when I wanted to tweak each parameter of my explosion effects (i.e. transform scales and color lerps) with precise control and better visualization instead of having to hardcode them one by one. I wanted something very similar to implementations in popular engines like Unreal, Unity or Godot.
 
 I searched but couldn't find a C++ curve library that would suits my needs: a library easy-to-use, small to install and a GUI editor compatible with it.
 
