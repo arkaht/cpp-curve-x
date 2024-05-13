@@ -84,9 +84,11 @@ For more examples, look at the [`tests/`](https://github.com/arkaht/cpp-curve-x/
 This project is built using **CMake 3.11**. However, with proper setup it is not required to add it inside your projects.
 
 ### Add Curve-X to your project
-#### With CMake
+<details><summary><b>With CMake</b></summary>
+
 1. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
 2. Move the `curve-x` folder inside your project libraries folder, for example: 
+
 ```
 <your_project>/
 ├── libs/
@@ -126,8 +128,10 @@ int main()
 }
 ```
 6. Compile and run your project, you're ready to go!
+</details>
 
-#### Without CMake
+<details><summary><b>Without CMake</b></summary>
+
 1. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
 2. Move the `curve-x` folder inside your project libraries folder, for example: 
 ```
@@ -160,22 +164,27 @@ int main()
 }
 ```
 6. Compile and run your project, you're ready to go!
+</details>
 
 ### Build the project
 > *Note: As I don't have **Linux** or **MacOS** machines, the following instructions have been written only for **Windows**.* If you know how to do it in those platforms, I'd welcome a pull request!
 
-#### Visual Studio Code
+<details><summary><b>Visual Studio Code</b></summary>
+
 1. Install **Visual Studio Code** extensions [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) and [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) from Microsoft.
 2. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
 3. Open the project's folder inside **Visual Studio Code**
-4. Configure the project with CMake (`Ctrl+Shift+P > CMake: Configure`)
-5. Build the project with CMake (`Ctrl+Shift+P > CMake: Build`, `F7` or `⚙ Build` button at the bottom-left)
+4. Configure the project with **CMake** (`Ctrl+Shift+P > CMake: Configure`)
+5. Build the project with **CMake** (`Ctrl+Shift+P > CMake: Build`, `F7` or `⚙ Build` button at the bottom-left)
 6. Run the project examples, you're ready to make changes!
+</details>
 
-#### Visual Studio 2022
+<details><summary><b>Visual Studio 2022</b></summary>
+
 1. Clone `arkaht/cpp-curve-x` or [download the ZIP](https://github.com/arkaht/cpp-curve-x/archive/refs/heads/master.zip) and extract it
 2. Open the project's folder inside **Visual Studio 2022**
 3. Once the project has been automatically configured, run the project examples, you're ready to make changes!
+</details>
 
 ## Why did I make it?
 Originally, it was because I wanted time-based curves for my game engine so I could better control the feeling of my games, especially when I wanted to tweak each parameter of my explosion effects (i.e. transform scales and color lerps) with precise control and better visualization instead of having to hardcode them one by one. I wanted something very similar to implementations in popular engines like Unreal, Unity or Godot.
