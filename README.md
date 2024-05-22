@@ -114,7 +114,7 @@ add_subdirectory("libs/curve-x")
 ```
 + Link the library to your project with `target_link_libraries`:
 ```cmake
-target_link_libraries(<your_project_target> PRIVATE curve_x <your_project_libs>)
+target_link_libraries(<your_project_target> PRIVATE curve-x <your_project_libs>)
 ```
 5. In your code, use the library, for example in your `main.cpp`:
 ```cpp
