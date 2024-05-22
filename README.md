@@ -69,9 +69,10 @@ int main()
 	std::string data = serializer.serialize( curve );
 	printf( "Curve serialized data:\n%s\n", data.c_str() );
 	//  Output:
+	//  Curve serialized data:
 	//  version:1
-	//	0:x=0.000000;y=0.000000,x=-1.000000;y=0.000000,x=1.000000;y=0.000000,0
-	//	1:x=1.000000;y=1.000000,x=-1.000000;y=0.000000,x=1.000000;y=0.000000,0
+	//  0:x=0.000000;y=0.000000,x=-1.000000;y=0.000000,x=1.000000;y=0.000000,0
+	//  1:x=1.000000;y=1.000000,x=-1.000000;y=0.000000,x=1.000000;y=0.000000,0
 
 	//  Write the serialized curve into a file
 	std::ofstream file( "my_curve.cvx" );
