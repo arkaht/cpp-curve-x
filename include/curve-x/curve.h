@@ -255,7 +255,7 @@ namespace curve_x
 		 */
 		int get_curves_count() const;
 		/*
-		 * Returns the number of apparent points.
+		 * Returns the number of points.
 		 */
 		int get_points_count() const;
 

@@ -417,7 +417,8 @@ int Curve::get_curves_count() const
 
 int Curve::get_points_count() const
 {
-	return ( get_keys_count() - 2 ) * 3 + 4;
+	//  3 points per key: control, left tangent and right tangent
+	return get_keys_count() * 3;
 }
 
 float Curve::get_length()
