@@ -170,7 +170,8 @@ int main()
 </details>
 
 ### Build the project
-> *Note: As I don't have **Linux** or **MacOS** machines, the following instructions have been written only for **Windows**.* If you know how to do it in those platforms, I'd welcome a pull request!
+> [!NOTE]
+> *As I don't have **Linux** or **MacOS** machines, the following instructions have been written only for **Windows**.* If you know how to do it in those platforms, I'd welcome a pull request!
 
 <details><summary><b>Visual Studio Code</b></summary>
 
